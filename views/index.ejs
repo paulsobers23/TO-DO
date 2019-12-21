@@ -1,0 +1,20 @@
+<h1> <%=todoList.listName %> </h1>
+<form method='post' action ='/add_task'>
+  <label for='taskID'>Task:</label>
+  <input type='text' id='taskID' name='task'>
+  <label for='date'>Due Date:</label>
+  <input type = 'datetime-local' id='date' name='dueDate'>
+  <input type = 'submit'>
+</form>
+
+<h2> Current Tasks</h2>
+<ul>
+  <% todoList.tasks.forEach(task => { %>
+   <li> <%= task.task %> |Due on <%= task.dueDate %>
+   <form action ='/delete_task' method='post' >
+     <input type = 'submit' name ='<%=task.task_id%>' value= 'delete' >
+   </form>
+   </li> 
+ <% }) %>
+
+</ul>
